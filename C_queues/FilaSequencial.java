@@ -13,6 +13,10 @@ class FilaSequencial <T> {
         this.fim = 0;
     }
 
+    FilaSequencial() {
+        this(DEFAULT_SIZE);
+    }
+
     public boolean isEmpty(){
         return inicio==fim; // que é igual à arr.length - 1 (eu acho)
     }
