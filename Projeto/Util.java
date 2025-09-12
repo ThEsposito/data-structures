@@ -1,7 +1,7 @@
 public class Util {
     public static <T> boolean arrayContains(T[] arr, T value){
         for(T e: arr){
-            if(e.equalsIgnoraCase(value)) return true;
+            if(e.equals(value)) return true;
         }
         return false;
     }
