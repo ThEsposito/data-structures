@@ -8,7 +8,7 @@ class FilaSequencial <T> {
     
     FilaSequencial(int size) throws IllegalArgumentException{
         if(size<=1) throw new IllegalArgumentException();
-        T = (T[]) new Object[size];
+        arr = (T[]) new Object[size];
         this.inicio = 0;
         this.fim = 0;
     }
@@ -31,17 +31,17 @@ class FilaSequencial <T> {
     }
 
     public T dequeue() throws RuntimeException{
-        if(this.isEmpty) throw new RuntimeException();
+        if(this.isEmpty()) throw new RuntimeException();
         return arr[inicio++];
     }
 
     public T front() throws RuntimeException{
-        if(this.isEmpty) throw new RuntimeException();
+        if(this.isEmpty()) throw new RuntimeException();
         return arr[inicio];
     }
 
     public T rear() throws RuntimeException{
-        if(this.isEmpty) throw new RuntimeException();
+        if(this.isEmpty()) throw new RuntimeException();
         return arr[fim];
     }
 

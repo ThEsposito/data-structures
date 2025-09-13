@@ -8,7 +8,7 @@ public class FilaCircular <T> {
     private int qtde;
 
     public FilaCircular(int size){
-        this.arr = (T[]) new Object(size);
+        this.arr = (T[]) new Object[size];
         this.qtde = 0;
         this.inicio = 0;
         this.fim = 0;
@@ -34,7 +34,7 @@ public class FilaCircular <T> {
 
         // Se o fim ultrapassar os limites do array, retorna para o indice 0
         // Aí, basta não permitirmos que incluam mais um elemento caso o fim sobrescreva o elemento do início
-        fim = (fim+1) % this.arr.length;
+        fim = (fim) % this.arr.length;
     }
 
     public T dequeue() throws RuntimeException {
@@ -48,13 +48,20 @@ public class FilaCircular <T> {
         return aux;
     }
 
-    public T front()throws RuntimeException{
+    public T front() throws RuntimeException {
         if(this.isEmpty()) throw new RuntimeException("Fila vazia");
         return arr[inicio];
     }
 
     public T rear() throws RuntimeException {
-        if(this.isFull) throw new RuntimeException("Pilha cheia");
-        return arr[fim];
+        if(this.isEmpty()) throw new RuntimeException("Pilha cheia");
+        int idxUltimo;
+        if(this.fim == 0) idxUltimo = arr.length -1;
+        else idxUltimo = fim-1;
+        return arr[idxUltimo];
+    }
+
+    public int size() {
+        return this.qtde;
     }
 }
