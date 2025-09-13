@@ -1,3 +1,5 @@
+package project;
+
 public class Util {
     public static <T> boolean arrayContains(T[] arr, T value){
         for(T e: arr){

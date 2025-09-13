@@ -1,7 +1,7 @@
-// Em java, a alocação de memória é dinâmica: !
+package A_poo_concepts;// Em java, a alocação de memória é dinâmica: !
 /*
 Num programa, reserva-se espeço em memoria para a execução do program, dividida em duas partes:
- - Stack: Espaço reservado para guardar as chamadas de função e variáveis locais *do programa*
+ - project.Stack: Espaço reservado para guardar as chamadas de função e variáveis locais *do programa*
  - Heap: Espaço livre para armazenar os dados das variáveis (tá certo isso?).
 */
 

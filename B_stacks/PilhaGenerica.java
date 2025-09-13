@@ -1,3 +1,5 @@
+package B_stacks;
+
 import java.util.EmptyStackException;
 
 public class PilhaGenerica <T> {
