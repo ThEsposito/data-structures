@@ -1,12 +1,12 @@
 package C_queues.exercises;
 
-import B_stacks.PilhaGenerica;
+import B_stacks.Pilha;
 import C_queues.FilaCircular;
 
 public class Ex2 {
     public static void main(String args[]){
         FilaCircular<Integer> f = new FilaCircular<>(10);
-        PilhaGenerica<Integer> p = new PilhaGenerica<>(10);
+        Pilha<Integer> p = new Pilha<>(10);
         int cont = 6;
         int digitoTIA = 6;
         while ( !p.isFull()) p.push( (digitoTIA +1)*cont--);

@@ -2,17 +2,17 @@ package B_stacks;
 
 import java.util.EmptyStackException;
 
-public class PilhaGenerica <T> {
+public class Pilha<T> {
     private static final int DEFAULT_SIZE = 100;
-    private T[] arr;
+    private final T[] arr;
     private int top;
 
-    public PilhaGenerica(int size){
+    public Pilha(int size){
         this.arr = (T[]) new Object[size];
         this.top = -1;
     }
 
-    public PilhaGenerica(){
+    public Pilha(){
         this.arr = (T[]) new Object[DEFAULT_SIZE];
         this.top = -1;
     }
@@ -38,5 +38,9 @@ public class PilhaGenerica <T> {
     public T top() throws EmptyStackException{
         if(this.isEmpty()) throw new EmptyStackException();
         return arr[top];
+    }
+
+    public int size() {
+        return top+1;
     }
 }
