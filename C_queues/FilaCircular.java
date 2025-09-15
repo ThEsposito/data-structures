@@ -60,4 +60,13 @@ public class FilaCircular <T> {
     public int size() {
         return this.qtde;
     }
+    // TODO: exercício 6
+    public void invert() {
+
+    }
+
+    // TODO: exercício 7
+    public void dequeuePosEven() {
+
+    }
 }
