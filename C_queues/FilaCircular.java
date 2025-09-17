@@ -1,5 +1,7 @@
 package C_queues;
 
+import java.util.Arrays;
+
 public class FilaCircular <T> {
     private static final int DEFAULT_SIZE = 100;
     private final T[] arr;
@@ -62,7 +64,20 @@ public class FilaCircular <T> {
     }
     // TODO: exercício 6
     public void invert() {
+        int i = this.inicio;
+        int j = (this.fim - 1)%arr.length;
 
+
+
+        while(i != j){
+            T temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+
+            i = (i+1) % arr.length;
+            j = (j+1) % arr.length;
+        }
     }
 
     // TODO: exercício 7
