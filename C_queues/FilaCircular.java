@@ -63,7 +63,7 @@ public class FilaCircular <T> {
     public int size() {
         return this.qtde;
     }
-    // TODO: exercício 6
+
     public void invert() throws RuntimeException{
         if(this.isEmpty()) throw new RuntimeException("Fila vazia");
 
@@ -86,11 +86,30 @@ public class FilaCircular <T> {
             if(j==0) j = arr.length - 1;
             else j--;
         }
+
+        // Outra forma de implementar (mais simples e mais legível):
+//        if(this.isEmpty()) throw new RuntimeException("Fila Vazia");
+//
+//        int i = this.inicio;
+//        int j = (fim == 0) ? arr.length-1 : fim-1;
+//
+//        for(int k=0; k<qtde/2; k++){
+//            T temp = arr[i];
+//            arr[i] = arr[j];
+//            arr[j] = temp;
+//
+//            i = (i+1)%arr.length;
+//            j = (j==0) ? arr.length - 1 : j-1;
+//        }
     }
 
     // TODO: exercício 7
+    //
     public void dequeuePosEven() {
         int pos = 0;
+
+        int i = this.inicio;
+
 
     }
 }
