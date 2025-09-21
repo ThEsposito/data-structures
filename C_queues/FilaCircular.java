@@ -77,7 +77,7 @@ public class FilaCircular <T> {
         T temp;
 
         // A segunda condição serve para quando o i e o j se cruzam, mas permanecem diferentes
-        while(i != j && (i-1)%arr.length != j){
+        while(i != j && (i + arr.length - 1) % arr.length != j){
             temp = this.arr[i];
             this.arr[i] = this.arr[j];
             this.arr[j] = temp;
@@ -90,6 +90,7 @@ public class FilaCircular <T> {
 
     // TODO: exercício 7
     public void dequeuePosEven() {
+        int pos = 0;
 
     }
 }
