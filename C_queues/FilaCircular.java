@@ -1,7 +1,5 @@
 package C_queues;
 
-import java.util.Arrays;
-
 public class FilaCircular <T> {
     private static final int DEFAULT_SIZE = 100;
     private final T[] arr;
@@ -11,19 +9,15 @@ public class FilaCircular <T> {
 
     public FilaCircular(int size){
         arr = (T[]) new Object[size];
-        int inicio = 0;
-        int fim = 0;
-        int qtde = 0;
+        this.inicio = 0;
+        this.fim = 0;
+        this.qtde = 0;
     }
 
     public FilaCircular(){
-        arr = (T[]) new Object[DEFAULT_SIZE];
-        int inicio = 0;
-        int fim = 0;
-        int qtde = 0;
+        this(DEFAULT_SIZE);
     }
 
-    // Tá certo isso aqui????
     public boolean isFull(){
         return qtde==arr.length;
     }
@@ -36,7 +30,7 @@ public class FilaCircular <T> {
         if(isFull()) throw new RuntimeException("Fila cheia");
 
         arr[fim] = e;
-        fim = (fim+1)%arr.length;
+        fim = ++fim % arr.length;
         qtde++;
     }
 
@@ -45,7 +39,7 @@ public class FilaCircular <T> {
 
         T result = arr[inicio];
         qtde--;
-        inicio = (inicio+1)%arr.length;
+        inicio = ++inicio % arr.length;
         return result;
     }
 
@@ -56,27 +50,41 @@ public class FilaCircular <T> {
 
     public T rear() throws RuntimeException {
         if(isEmpty()) throw new RuntimeException("Fila vazia");
-        return arr[fim];
+
+        // Índice para o último elemento da fila
+        int pfinal;
+
+        if(this.fim == 0) pfinal = arr.length - 1;
+        else pfinal = this.fim - 1;
+
+        return this.arr[pfinal];
     }
 
     public int size() {
         return this.qtde;
     }
     // TODO: exercício 6
-    public void invert() {
+    public void invert() throws RuntimeException{
+        if(this.isEmpty()) throw new RuntimeException("Fila vazia");
+
+        // i aponta para o primeiro elemento e j para o último
         int i = this.inicio;
-        int j = (this.fim - 1)%arr.length;
+        int j;
 
+        if(this.fim == 0) j = arr.length - 1;
+        else j = this.fim-1;
 
+        T temp;
 
-        while(i != j){
-            T temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+        // A segunda condição serve para quando o i e o j se cruzam, mas permanecem diferentes
+        while(i != j && (i-1)%arr.length != j){
+            temp = this.arr[i];
+            this.arr[i] = this.arr[j];
+            this.arr[j] = temp;
 
-
-            i = (i+1) % arr.length;
-            j = (j+1) % arr.length;
+            i = ++i % arr.length;
+            if(j==0) j = arr.length - 1;
+            else j--;
         }
     }
 
