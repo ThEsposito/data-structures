@@ -103,13 +103,30 @@ public class FilaCircular <T> {
 //        }
     }
 
-    // TODO: exercício 7
-    //
-    public void dequeuePosEven() {
-        int pos = 0;
+    /*
+    Elaborar um método da classe fila circular que remova
+    TODOS os elementos de ordem par da fila. Fazer um
+    programa principal de teste.
+    */
+    public void dequeuePosEven() throws RuntimeException {
+        if(this.isEmpty()) throw new RuntimeException("FIla vazia");
 
-        int i = this.inicio;
+//        int i = inicio;
+//        int ultimo = (fim == 0) ? arr.length - 1 : fim-1;
+//
+//        // Vou começar iterando pelo elemento logo após o início
+//        int ordem = 2;
+//        int newIdx = (inicio + 1)%arr.length;
+//        while(i != ultimo){
+//
+//            ordem +=2;
+//        }
+        // Começa pelo 1o elemento do vetor (ordem 2)
+        int elemtAtual;
+        int novoIdx = this.inicio;
 
+        for(int i=1; i<qtde; i+=2){
 
+        }
     }
 }
