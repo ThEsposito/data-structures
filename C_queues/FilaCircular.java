@@ -1,7 +1,5 @@
 package C_queues;
 
-import java.util.function.Consumer;
-
 public class FilaCircular <T> {
     private static final int DEFAULT_SIZE = 100;
     private final T[] arr;
@@ -67,6 +65,12 @@ public class FilaCircular <T> {
     }
 
     public void invert() throws RuntimeException{
+        // Também daria pra implementar usando uma fila auxiliar, embora eu
+        // acredite que seria menos eficiente:
+        /*
+        Em termos de memória, esse algoritmo é local (usa o espaço do array que já temos).
+        Usando uma pilha, seria necessário o dobro de memória
+         */
         if(this.isEmpty()) throw new RuntimeException("Fila vazia");
 
         // i aponta para o primeiro elemento e j para o último
@@ -122,5 +126,19 @@ public class FilaCircular <T> {
             if(pos % 2 != 0) this.enqueue(aux);
             pos++;
         }
+    }
+
+    /*
+    Elaborar um método da classe fila circular que remova
+    TODOS os elementos de ordem ímpar da fila. Fazer um
+    programa principal de teste.
+     */
+    public void dequeuePosOdd() {
+        int n = this.qtde;
+        for(int pos=1; pos<=n; pos++){
+            T aux = this.dequeue();
+            if(pos%2==0) this.enqueue(aux);
+        }
+
     }
 }
