@@ -133,12 +133,19 @@ public class FilaCircular <T> {
     TODOS os elementos de ordem ímpar da fila. Fazer um
     programa principal de teste.
      */
-    public void dequeuePosOdd() {
+    public void dequeuePosOdd() throws RuntimeException{
+        if(this.isEmpty()) throw new RuntimeException("FIla vazia");
         int n = this.qtde;
         for(int pos=1; pos<=n; pos++){
             T aux = this.dequeue();
             if(pos%2==0) this.enqueue(aux);
         }
+    }
 
+    public void dequeueNFirst(int n) throws IllegalArgumentException {
+        if(n > this.qtde) throw new IllegalArgumentException("n must be less than or equal to size");
+
+        inicio = (inicio + n) % arr.length;
+        this.qtde -= n;
     }
 }

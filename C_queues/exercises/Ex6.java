@@ -2,7 +2,7 @@ package C_queues.exercises;
 
 import C_queues.FilaCircular;
 
-public class Ex5 {
+public class Ex6 {
     public static void main(String[] args) {
         int maxSize = 5;
         FilaCircular<Integer> f = new FilaCircular<>(maxSize);
@@ -15,14 +15,13 @@ public class Ex5 {
         }
         System.out.println('}');
 
-        // F = { 1, 3, 5 }
-        f.dequeuePosOdd();
+        // F = { 2, 3, 4 }
+        f.dequeueNFirst(2);
 
         System.out.print("F = { ");
         while(!f.isEmpty()){
             System.out.print(f.dequeue()+" ");
         }
         System.out.println('}');
-
     }
 }
