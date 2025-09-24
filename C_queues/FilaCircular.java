@@ -1,5 +1,7 @@
 package C_queues;
 
+import java.util.function.Consumer;
+
 public class FilaCircular <T> {
     private static final int DEFAULT_SIZE = 100;
     private final T[] arr;
@@ -111,22 +113,19 @@ public class FilaCircular <T> {
     public void dequeuePosEven() throws RuntimeException {
         if(this.isEmpty()) throw new RuntimeException("FIla vazia");
 
-//        int i = inicio;
-//        int ultimo = (fim == 0) ? arr.length - 1 : fim-1;
-//
-//        // Vou começar iterando pelo elemento logo após o início
-//        int ordem = 2;
-//        int newIdx = (inicio + 1)%arr.length;
-//        while(i != ultimo){
-//
-//            ordem +=2;
+        // Obs: pos(ição) será sempre i+1. Poderia fazer a condicional com o i para otimizar
+        // (conferindo se é par no lugar de impar) mas achei essa forma mais didática;
+        int pos = 1;
+//        while (pos <= qtde){
+//            T aux = this.dequeue();
+//            if(pos % 2 != 0) this.enqueue(aux);
+//            pos++;
 //        }
-        // Começa pelo 1o elemento do vetor (ordem 2)
-        int elemtAtual;
-        int novoIdx = this.inicio;
-
-        for(int i=1; i<qtde; i+=2){
-
+        int n = qtde;
+        for(int i=0; i<n; i++){
+            T aux = this.dequeue();
+            if(pos % 2 != 0) this.enqueue(aux);
+            pos++;
         }
     }
 }

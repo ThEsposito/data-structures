@@ -1,0 +1,26 @@
+package C_queues.exercises;
+
+import C_queues.FilaCircular;
+
+public class Ex4 {
+    public static void main(String[] args) {
+        int maxSize = 8;
+        FilaCircular<Integer> f = new FilaCircular<>(maxSize);
+
+        // F = { 0, 1, 2, 3, 4 }
+        System.out.print("F = { ");
+        for(int i=0; i<maxSize; i++){
+            f.enqueue(i);
+            System.out.print(i+ " ");
+        }
+        System.out.println("}");
+
+        // F = { 0, 2, 4 }
+        f.dequeuePosEven();
+
+        while(!f.isEmpty()){
+            System.out.println(f.dequeue());
+        }
+
+    }
+}
