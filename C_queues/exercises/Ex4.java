@@ -4,7 +4,7 @@ import C_queues.FilaCircular;
 
 public class Ex4 {
     public static void main(String[] args) {
-        int maxSize = 8;
+        int maxSize = 5;
         FilaCircular<Integer> f = new FilaCircular<>(maxSize);
 
         // F = { 0, 1, 2, 3, 4 }
@@ -13,14 +13,16 @@ public class Ex4 {
             f.enqueue(i);
             System.out.print(i+ " ");
         }
-        System.out.println("}");
+        System.out.println('}');
 
         // F = { 0, 2, 4 }
         f.dequeuePosEven();
 
+        System.out.print("F = { ");
         while(!f.isEmpty()){
-            System.out.println(f.dequeue());
+            System.out.print(f.dequeue()+" ");
         }
+        System.out.println('}');
 
     }
 }

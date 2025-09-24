@@ -116,13 +116,8 @@ public class FilaCircular <T> {
         // Obs: pos(ição) será sempre i+1. Poderia fazer a condicional com o i para otimizar
         // (conferindo se é par no lugar de impar) mas achei essa forma mais didática;
         int pos = 1;
-//        while (pos <= qtde){
-//            T aux = this.dequeue();
-//            if(pos % 2 != 0) this.enqueue(aux);
-//            pos++;
-//        }
         int n = qtde;
-        for(int i=0; i<n; i++){
+        while (pos <= n){
             T aux = this.dequeue();
             if(pos % 2 != 0) this.enqueue(aux);
             pos++;
