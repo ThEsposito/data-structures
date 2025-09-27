@@ -63,7 +63,7 @@ public class Ex2 {
         // usar um .dequeueLeft(). Optei por usar p como pilha até o fim para fins didáticos.
 
         while(!p.isEmpty()){
-            System.out.println(p.dequeueRight());
+            System.out.print(p.dequeueRight()+" ");
         }
     }
 }
