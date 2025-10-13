@@ -51,13 +51,7 @@ public class ListaEncadeada<T> {
     }
 
     public void addFirst(T e){
-        if(isEmpty()){
-            this.head = new Node<>(e);
-        } else {
-            // Head passa a ser um novo elemento, que aponta para o antigo head
-            head = new Node<>(e, head);
-        }
-
+        head = new Node<>(e, head); // Ainda funciona, se head for null
         size++;
     }
 
@@ -74,5 +68,54 @@ public class ListaEncadeada<T> {
             aux.setNext(new Node<>(e));
         }
         size++;
+    }
+
+    public Node<T> search(T data){
+        if(this.isEmpty()) return null;
+
+        Node<T> aux = head;
+
+        while(aux != null){
+            if(aux.getData().equals(data)) return aux;
+
+            aux = aux.getNext();
+        }
+
+        return null; // Not found
+    }
+
+    public Node<T> pollFirst() {
+        if(isEmpty()) return null; // Illegal State
+        this.size--;
+
+        Node<T> aux = head;
+        head = head.getNext();
+        return aux;
+    }
+
+    public Node<T> pollLast() {
+        if(isEmpty()) return null;
+        this.size--;
+
+        // Se houver só 1 elemento
+        if(head.getNext() == null) {
+            Node<T> aux = head;
+            head = null;
+            return aux;
+        }
+
+        Node<T> aux = head;
+        while (aux.getNext().getNext() != null){
+            aux = aux.getNext();
+        }
+
+        Node<T> last = aux.getNext();
+        aux.setNext(null);
+        return last;
+    }
+
+    public void clear(){
+        this.head = null;
+        this.size = 0;
     }
 }
