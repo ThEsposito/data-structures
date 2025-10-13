@@ -9,8 +9,9 @@ public class Node<T> {
         this.next = next;
     }
 
-    public Node(){
-        this(null, null);
+    public Node(T data){
+        this.data = data;
+        this.next = null;
     }
 
     public T getData() {
