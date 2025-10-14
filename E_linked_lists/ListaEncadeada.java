@@ -70,6 +70,28 @@ public class ListaEncadeada<T> {
         size++;
     }
 
+    public void insert(T e, int pos){
+        if(pos < 0 || pos > size) return; // Illegal argument
+
+        if(isEmpty() || pos == size) {
+            this.addLast(e);
+            return;
+        }
+
+        if(pos == 0){
+            this.addFirst(e);
+            return;
+        }
+
+        size++;
+        Node<T> aux = head;
+        for(int i=0; i<pos-1; i++){
+            aux = aux.getNext();
+        }
+
+        aux.setNext(new Node<>(e, aux.getNext()));
+    }
+
     public Node<T> search(T data){
         if(this.isEmpty()) return null;
 
@@ -117,5 +139,25 @@ public class ListaEncadeada<T> {
     public void clear(){
         this.head = null;
         this.size = 0;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder("[");
+
+        Node<T> aux = head;
+
+        while(aux != null){
+            result.append(aux.getData());
+            result.append(" ");
+            aux = aux.getNext();
+        }
+
+        result.append(']');
+        result.append("\nSize: ");
+        result.append(size);
+        result.append('\n');
+
+        return result.toString();
     }
 }
