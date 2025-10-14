@@ -1,10 +1,10 @@
 package E_linked_lists;
 
-public class ListaEncadeada<T> {
+public class LinkedList<T> {
     private Node<T> head;
     private int size;
 
-    public ListaEncadeada(){
+    public LinkedList(){
         this.size = 0;
         this.head = null;
     }
@@ -90,6 +90,50 @@ public class ListaEncadeada<T> {
         }
 
         aux.setNext(new Node<>(e, aux.getNext()));
+    }
+
+    public boolean remove(T e){
+        if(isEmpty()) return false;
+        Node<T> aux = head;
+        Node<T> previous = null;
+
+        while(aux != null && !aux.getData().equals(e)){
+            previous = aux;
+            aux = aux.getNext();
+        }
+        if(aux == null) return false; // Not found
+
+        if(head == aux) {
+            head = head.getNext();
+        } else {
+            previous.setNext(aux.getNext());
+        }
+
+        size--;
+        return true;
+    }
+
+    public boolean removeAt(int pos){
+        if(pos < 0 || pos >= size) return false;
+        if(isEmpty()) return false;
+
+        if(pos == 0) {
+            pollFirst();
+            return true;
+        }
+
+        if(pos == size-1){
+            pollLast();
+            return true;
+        }
+
+        Node<T> aux = head;
+        for(int i=0; i<pos-1; i++){
+            aux = aux.getNext();
+        }
+        aux.setNext(aux.getNext().getNext());
+        size--;
+        return true;
     }
 
     public Node<T> search(T data){
