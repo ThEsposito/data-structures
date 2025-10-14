@@ -27,11 +27,11 @@ public class LinkedListTest01 {
         // Percorre a lista e apresenta os dados
         System.out.print("L: [ ");
         int tam = lista.getSize();
-        for(int pos = 1; pos <= tam; pos++) {
+        for(int pos = 0; pos < tam; pos++) {
             if (pos != tam)
-                System.out.print(String.format("%2do:%d,", pos, lista.get(pos).getDado().intValue()));
+                System.out.print(String.format("%2do: %d, ", pos, lista.get(pos).getData().intValue()));
             else
-                System.out.print(String.format("%2do:%d ", pos, lista.get(pos).getDado().intValue()));
+                System.out.print(String.format("%2do:%d ", pos, lista.get(pos).getData().intValue()));
         }
         System.out.println("]");
 
