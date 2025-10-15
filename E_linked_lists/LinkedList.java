@@ -185,6 +185,23 @@ public class LinkedList<T> {
         this.size = 0;
     }
 
+    public void invert2() { // Tempo em O(n), Memória em O(1)
+        if(isEmpty()) return;
+
+        Node<T> aux = head;
+        Node<T> prior = null;
+        Node<T> next = null;
+        while(aux != null){
+            next = aux.getNext(); 
+
+            aux.setNext(prior);
+            
+            prior = aux;
+            aux = next;            
+        }
+        head = prior;
+    }
+
     @Override
     public String toString(){
         StringBuilder result = new StringBuilder("[");
