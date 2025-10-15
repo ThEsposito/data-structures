@@ -26,6 +26,7 @@ public class Ex1 {
             }
         } while (resp == 'S');
 
+        s.close();
         // INSERIR O SEU CÓDIGO AQUI
         Pilha<Integer> aux = new Pilha<>(100);
 

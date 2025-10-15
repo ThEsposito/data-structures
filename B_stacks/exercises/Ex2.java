@@ -27,6 +27,7 @@ public class Ex2 {
                 System.out.println("O valor tem que ser positivo, né irmão.");
             }
         } while(n!=999);
+        sc.close();
 
         Pilha<Integer> pares = new Pilha<>(100);
         Pilha<Integer> impares = new Pilha<>(100);

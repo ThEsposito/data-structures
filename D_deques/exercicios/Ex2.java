@@ -1,9 +1,6 @@
 package D_deques.exercicios;
 
-import B_stacks.Pilha;
-import C_queues.FilaCircular;
 import D_deques.Deque;
-import com.sun.jdi.PathSearchingVirtualMachine;
 
 import java.util.Scanner;
 
