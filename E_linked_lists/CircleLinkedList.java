@@ -51,6 +51,8 @@ public class CircleLinkedList<T> {
         if(idx == size-1) return tail.getData();
 
         Node<T> current = head;
+
+        // O(n)
         for(int i=0; i<idx; i++) current = current.getNext(); // Already returns head, if idx==0
 
         return current.getData();
@@ -87,6 +89,106 @@ public class CircleLinkedList<T> {
 
     public void addFirst(T e) {
         insertHead(e);
+    }
+
+    public void insert(T e, int idx){
+        if(idx < 0 || idx > size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+
+        if(idx == size) addLast(e);
+        else if(idx == 0) addFirst(e);
+        else {
+            Node<T> newNode = new Node<>(e, null);
+            Node<T> current = head;
+
+            for(int i=0; i<idx-1; i++) current = current.getNext();
+            newNode.setNext(current.getNext());
+            current.setNext(newNode);
+            size++;
+        }
+    }
+
+    public int search(T e){
+        if(isEmpty()) return -1;
+
+        Node<T> current = head;
+        int i = 0;
+        while(current != tail && !current.getData().equals(e)) {
+            current = current.getNext();
+            i++;
+        }
+
+        if(current.getData().equals(e)) return i;
+
+        return -1;
+    }
+
+    // TODO: test
+    public void removeAt(int idx){
+        if(isEmpty()) throw new NoSuchElementException();
+        if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+
+        if(idx == size-1) pollLast();
+        else {
+            Node<T> current = head;
+            for(int i=0; i<idx-1; i++) current = current.getNext();
+
+            Node<T> next = current.getNext();
+            current.setNext(head);
+            next.setNext(null);
+
+            size--;
+        }
+
+    }
+
+    public T pollFirst(){
+        if(isEmpty()) throw new NoSuchElementException();
+
+        Node<T> first = head;
+
+        if(tail == head){ // 1 element
+            tail = head = null;
+        } else {
+            head = head.getNext();
+            tail.setNext(head);
+        }
+        size--;
+        first.setNext(null); // Disconnects the removed node to allow GC and avoid lingering references
+        return first.getData();
+    }
+
+    public T pollLast(){
+        if(isEmpty()) throw new NoSuchElementException();
+        Node<T> last = tail;
+
+        if(head == tail) head = tail = null;
+        else {
+            Node<T> current = head;
+            while(current.getNext() != tail) current = current.getNext(); // O(n)
+            current.setNext(head);
+            tail = current;
+        }
+        size--;
+        last.setNext(null);
+        return last.getData();
+    }
+
+    public T pollAt(int idx){
+        if(isEmpty()) throw new NoSuchElementException();
+        if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+
+        if(idx == size-1) return pollLast();
+
+        Node<T> current = head;
+
+        for(int i=0; i<idx-1; i++) current = current.getNext();
+
+        Node<T> next = current.getNext();
+        current.setNext(head);
+        next.setNext(null);
+        size--;
+
+        return next.getData();
     }
 
     @Override
