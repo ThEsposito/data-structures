@@ -11,6 +11,10 @@ public class DNode<T extends Comparable<T>> {
         this.data = data;
     }
 
+    public DNode(T data) {
+        this(data, null, null);
+    }
+
     public DNode<T> getLeft() {
         return left;
     }
