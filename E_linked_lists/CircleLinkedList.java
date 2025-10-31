@@ -46,7 +46,8 @@ public class CircleLinkedList<T> {
 
     public T get(int idx){
         if(isEmpty()) throw new NoSuchElementException();
-        if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+        if(idx < 0 || idx >= size)
+            throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
 
         if(idx == size-1) return tail.getData();
 
@@ -92,7 +93,8 @@ public class CircleLinkedList<T> {
     }
 
     public void insert(T e, int idx){
-        if(idx < 0 || idx > size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+        if(idx < 0 || idx > size)
+            throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
 
         if(idx == size) addLast(e);
         else if(idx == 0) addFirst(e);
@@ -122,10 +124,40 @@ public class CircleLinkedList<T> {
         return -1;
     }
 
+    public boolean remove(T e){
+        if(isEmpty()) return false;
+
+        Node<T> current = head;
+        Node<T> prev = null;
+
+        while(current != tail && !current.getData().equals(e)){
+            prev = current;
+            current = current.getNext();
+        }
+
+        if(!current.getData().equals(e)) return false; // not found, including tail
+
+        if(prev == null) { // Remove head
+            head = head.getNext();
+            tail.setNext(head);
+        } else if(current == tail) { // Remove teil
+            tail.setNext(null);
+            tail = prev;
+            tail.setNext(head);
+        } else if(head == tail){ // Remove the only element
+            head = tail = null;
+        } else { // Not extremities
+            prev.setNext(current.getNext());
+        }
+        size--;
+        return true;
+    }
+
     // TODO: test
     public void removeAt(int idx){
         if(isEmpty()) throw new NoSuchElementException();
-        if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+        if(idx < 0 || idx >= size)
+            throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
 
         if(idx == size-1) pollLast();
         else {
@@ -175,7 +207,8 @@ public class CircleLinkedList<T> {
 
     public T pollAt(int idx){
         if(isEmpty()) throw new NoSuchElementException();
-        if(idx < 0 || idx >= size) throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
+        if(idx < 0 || idx >= size)
+            throw new IndexOutOfBoundsException("Index "+idx+" out of bounds for length "+size);
 
         if(idx == size-1) return pollLast();
 
