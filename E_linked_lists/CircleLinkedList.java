@@ -224,6 +224,26 @@ public class CircleLinkedList<T> {
         return next.getData();
     }
 
+    public void invert(){
+        if(size <= 1) return;
+
+        Node<T> current = head;
+        Node<T> prev = tail;
+        Node<T> next = head.getNext();
+
+        while(current != tail){
+            current.setNext(prev);
+            prev = current;
+            current = next;
+
+            next = next.getNext();
+        }
+        current.setNext(prev);
+
+        tail = head;
+        head = current;
+    }
+
     @Override
     public String toString(){
         if (isEmpty()) {
