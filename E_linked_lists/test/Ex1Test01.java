@@ -11,7 +11,7 @@ public class Ex1Test01 {
         }
         System.out.print("Antes: ");
         System.out.println(list);
-        list.invert2();
+        list.invert();
 
         System.out.println("Depois: ");
         System.out.println(list);

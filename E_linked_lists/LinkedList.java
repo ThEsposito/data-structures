@@ -185,8 +185,8 @@ public class LinkedList<T> {
         this.size = 0;
     }
 
-    public void invert2() { // Tempo em O(n), Memória em O(1)
-        if(isEmpty()) return;
+    public void invert() { // Tempo em O(n), Memória em O(1)
+        if(isEmpty() || size==1) return;
 
         Node<T> aux = head;
         Node<T> prior = null;
