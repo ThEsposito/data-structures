@@ -202,6 +202,25 @@ public class LinkedList<T> {
         head = prior;
     }
 
+    public void cat(LinkedList<T> list){
+        if(list.isEmpty()) return;
+
+        if(this.isEmpty()){
+            this.head = list.pollFirst();
+        }
+
+        Node<T> current = head;
+        while(current.getNext() != null)
+            current = current.getNext();
+
+        int n = list.getSize();
+        while(!list.isEmpty()) {
+            current.setNext(list.pollFirst());
+            current = current.getNext();
+        }
+        size += n;
+    }
+
     @Override
     public String toString(){
         StringBuilder result = new StringBuilder("[");

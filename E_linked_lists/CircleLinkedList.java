@@ -225,7 +225,7 @@ public class CircleLinkedList<T> {
     }
 
     public void invert(){
-        if(size <= 1) return;
+        if(head == null || head == tail) return; // if(size<=1)
 
         Node<T> current = head;
         Node<T> prev = tail;
@@ -241,7 +241,7 @@ public class CircleLinkedList<T> {
         current.setNext(prev);
 
         tail = head;
-        head = current;
+        head = current; // Current points to tail when the loop stops
     }
 
     @Override
