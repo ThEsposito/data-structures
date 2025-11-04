@@ -206,19 +206,51 @@ public class LinkedList<T> {
         if(list.isEmpty()) return;
 
         if(this.isEmpty()){
-            this.head = list.pollFirst();
+            this.head = list.getHead();
+            return;
         }
 
         Node<T> current = head;
         while(current.getNext() != null)
-            current = current.getNext();
+            current = current.getNext(); /// Find tail
 
-        int n = list.getSize();
-        while(!list.isEmpty()) {
-            current.setNext(list.pollFirst());
-            current = current.getNext();
+        current.setNext(list.getHead());
+        size += list.getSize();
+    }
+
+
+    public void merge(LinkedList<T> list) {
+        if(list.isEmpty()) return;
+
+        if(this.isEmpty()) {
+            this.head = list.getHead();
+            this.size = list.getSize();
+            return;
         }
-        size += n;
+
+        Node<T> curA = this.head;
+        Node<T> nextA = curA.getNext();
+
+        Node<T> curB = list.getHead();
+        Node<T> nextB = curB.getNext();
+
+        while(nextA != null && nextB != null){
+            nextA = curA.getNext();
+            nextB = curB.getNext();
+
+            curA.setNext(curB);
+            curB.setNext(nextA);
+            curA = nextA;
+            curB = nextB;
+        }
+
+        if (nextA == null && curA != null) { // Fim dessa lista, completa com o da próxima
+            curA.setNext(curB);
+        }
+        this.size+=list.getSize();
+
+
+
     }
 
     @Override
