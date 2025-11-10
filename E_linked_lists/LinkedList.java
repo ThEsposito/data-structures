@@ -201,23 +201,26 @@ public class LinkedList<T> {
         head = prior;
     }
 
-    public void cat(LinkedList<T> list){
-        if(list.isEmpty()) return;
+    public void cat(LinkedList<T> other){
+        if(other.isEmpty()) return;
 
-        if(this.isEmpty()){
-            this.head = list.getHead();
-            return;
+        Node<T> otherCurrent = other.getHead();
+        int counter = 0;
+        if(this.isEmpty()) {
+            addFirst(otherCurrent.getData());
+            otherCurrent = otherCurrent.getNext();
         }
+        Node<T> thisCurrent = this.getLast();
 
-        Node<T> current = head;
-        while(current.getNext() != null)
-            current = current.getNext(); /// Find tail
+        while(otherCurrent != null){
+            thisCurrent.setNext(new Node<T>(otherCurrent.getData()));
+            thisCurrent = thisCurrent.getNext();
+            otherCurrent = otherCurrent.getNext();
+            counter++;
+        }
+        size+=counter;
 
-        current.setNext(list.getHead());
-        size += list.getSize();
     }
-
-
     public void merge(LinkedList<T> list) {
         if(list.isEmpty()) return;
 
