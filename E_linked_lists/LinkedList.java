@@ -192,8 +192,7 @@ public class LinkedList<T> {
         Node<T> prior = null;
         Node<T> next = null;
         while(aux != null){
-            next = aux.getNext(); 
-
+            next = aux.getNext();
             aux.setNext(prior);
             
             prior = aux;
