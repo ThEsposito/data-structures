@@ -2,7 +2,7 @@ package E_linked_lists.test;
 
 import E_linked_lists.LinkedList;
 
-public class Ex1Test01 {
+public class Ex1Test {
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
 
@@ -11,7 +11,7 @@ public class Ex1Test01 {
         }
         System.out.print("Antes: ");
         System.out.println(list);
-        list.invert2();
+        list.invert();
 
         System.out.println("Depois: ");
         System.out.println(list);

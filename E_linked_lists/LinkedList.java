@@ -185,21 +185,74 @@ public class LinkedList<T> {
         this.size = 0;
     }
 
-    public void invert2() { // Tempo em O(n), Memória em O(1)
-        if(isEmpty()) return;
+    public void invert() { // Tempo em O(n), Memória em O(1)
+        if(isEmpty() || size==1) return;
 
         Node<T> aux = head;
         Node<T> prior = null;
         Node<T> next = null;
         while(aux != null){
-            next = aux.getNext(); 
-
+            next = aux.getNext();
             aux.setNext(prior);
             
             prior = aux;
             aux = next;            
         }
         head = prior;
+    }
+
+    public void cat(LinkedList<T> other){
+        if(other.isEmpty()) return;
+
+        Node<T> otherCurrent = other.getHead();
+        int counter = 0;
+        if(this.isEmpty()) {
+            addFirst(otherCurrent.getData());
+            otherCurrent = otherCurrent.getNext();
+        }
+        Node<T> thisCurrent = this.getLast();
+
+        while(otherCurrent != null){
+            thisCurrent.setNext(new Node<T>(otherCurrent.getData()));
+            thisCurrent = thisCurrent.getNext();
+            otherCurrent = otherCurrent.getNext();
+            counter++;
+        }
+        size+=counter;
+
+    }
+    public void merge(LinkedList<T> list) {
+        if(list.isEmpty()) return;
+
+        if(this.isEmpty()) {
+            this.head = list.getHead();
+            this.size = list.getSize();
+            return;
+        }
+
+        Node<T> curA = this.head;
+        Node<T> nextA = curA.getNext();
+
+        Node<T> curB = list.getHead();
+        Node<T> nextB = curB.getNext();
+
+        while(nextA != null && nextB != null){
+            nextA = curA.getNext();
+            nextB = curB.getNext();
+
+            curA.setNext(curB);
+            curB.setNext(nextA);
+            curA = nextA;
+            curB = nextB;
+        }
+
+        if (nextA == null && curA != null) { // Fim dessa lista, completa com o da próxima
+            curA.setNext(curB);
+        }
+        this.size+=list.getSize();
+
+
+
     }
 
     @Override

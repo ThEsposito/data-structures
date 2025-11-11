@@ -15,9 +15,9 @@ public class LinkedListTest01 {
         // Verifica se o 35 está na lista
         int valor = 35;
         if (lista.search(valor) !=  null)
-            System.out.println(String.format("Valor: %d, existe na lista", lista.search(valor).getData().intValue()));
+            System.out.printf("Valor: %d, existe na lista%n", lista.search(valor).getData());
         else
-            System.out.println(String.format("Valor: %d, não existe na lista", valor));
+            System.out.printf("Valor: %d, não existe na lista%n", valor);
 
         // Remove o elemento 12 da lista
         System.out.println("Remoção do 12: ");
