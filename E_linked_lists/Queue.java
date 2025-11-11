@@ -24,6 +24,7 @@ public class Queue<T> {
             tail = newNode;
         } else {
             tail.setNext(newNode);
+            tail = newNode;
         }
         size++;
     }
