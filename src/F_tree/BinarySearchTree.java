@@ -1,6 +1,7 @@
 package F_tree;
 
 import E_linked_lists.CircleLinkedList;
+import E_linked_lists.Queue;
 
 public class BinarySearchTree {
     private Node root;
@@ -98,6 +99,20 @@ public class BinarySearchTree {
         System.out.printf("%d ",root.value);
     }
 
+    public void levelOrderTraversal() {
+        Queue<Node> q = new Queue<>();
+        q.enqueue(root);
+
+        while(!q.isEmpty()){
+            Node root = q.dequeue();
+            System.out.printf("%d ", root.value);
+
+            if(root.left != null) q.enqueue(root.left);
+            if(root.right != null) q.enqueue(root.right);
+        }
+        System.out.print('\n');
+    }
+
     // It's just an exercise. Always return true.
     public boolean isBst() {
         return isBstRecursive(root);
@@ -125,6 +140,14 @@ public class BinarySearchTree {
 
         return i+j;
     }
+
+//    public int getHeight(){
+//        return getHeightRecursive(root, 0) - 1;
+//    }
+//
+//    private int getHeightRecursive(Node root, int i) {
+//
+//    }
 
     public CircleLinkedList<Integer> toOrdererList(){
         CircleLinkedList<Integer> l = new CircleLinkedList<>();

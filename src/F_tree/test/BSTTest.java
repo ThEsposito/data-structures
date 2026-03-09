@@ -14,6 +14,17 @@ public class BSTTest {
         tree.insert(9);
         tree.insert(6);
         tree.insert(-1);
+        tree.insert(12);
+
+/*
+            5
+          /    \
+         3      8
+       /  \    /  \
+      1    4  7    9
+     /       /      \
+   -1       6       12
+*/
 
         System.out.println("Search 4: "+tree.contains(4));
         System.out.println("Search 6: "+tree.contains(6));
@@ -25,15 +36,21 @@ public class BSTTest {
         }
         System.out.print("Pre-order: ");
         tree.preOrderTraversal();
+
         System.out.print("In-order: ");
         tree.inOrderTraversal();
+
         System.out.print("Post-order: ");
         tree.postOrderTraversal();
+
+        System.out.println("Level Order: ");
+        tree.levelOrderTraversal();
 
         System.out.println("Is this a BST?: "+tree.isBst());
 
         System.out.println("Nodes: " + tree.size());
 
         System.out.println("To Ordered List: " + tree.toOrdererList());
+
     }
 }
