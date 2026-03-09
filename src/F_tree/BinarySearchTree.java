@@ -1,9 +1,6 @@
 package F_tree;
 
 import E_linked_lists.CircleLinkedList;
-import E_linked_lists.LinkedList;
-
-import java.util.List;
 
 public class BinarySearchTree {
     private Node root;
@@ -62,42 +59,42 @@ public class BinarySearchTree {
         return current.value;
     }
 
-    public void inOrder() {
-        inOrderRec(root);
+    public void inOrderTraversal() {
+        inOrderTraversalRec(root);
         System.out.print('\n');
     }
 
-    private void inOrderRec(Node root) {
+    private void inOrderTraversalRec(Node root) {
         if(root == null) return;
 
-        inOrderRec(root.left);
+        inOrderTraversalRec(root.left);
         System.out.printf("%d ",root.value);
-        inOrderRec(root.right);
+        inOrderTraversalRec(root.right);
     }
 
-    public void preOrder() {
-        preOrderRec(root);
+    public void preOrderTraversal() {
+        preOrderTraversalRec(root);
         System.out.print('\n');
 
     }
 
-    private void preOrderRec(Node root) {
+    private void preOrderTraversalRec(Node root) {
         if(root == null) return;
 
         System.out.printf("%d ",root.value);
-        preOrderRec(root.left);
-        preOrderRec(root.right);
+        preOrderTraversalRec(root.left);
+        preOrderTraversalRec(root.right);
     }
 
-    public void postOrder(){
-        postOrderRec(root);
+    public void postOrderTraversal(){
+        postOrderTraversalRec(root);
         System.out.print('\n');
     }
 
-    private void postOrderRec(Node root){
+    private void postOrderTraversalRec(Node root){
         if(root == null) return;
-        postOrderRec(root.left);
-        postOrderRec(root.right);
+        postOrderTraversalRec(root.left);
+        postOrderTraversalRec(root.right);
         System.out.printf("%d ",root.value);
     }
 

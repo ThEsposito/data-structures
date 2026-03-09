@@ -24,11 +24,11 @@ public class BSTTest {
             System.out.println(e.getMessage());
         }
         System.out.print("Pre-order: ");
-        tree.preOrder();
+        tree.preOrderTraversal();
         System.out.print("In-order: ");
-        tree.inOrder();
+        tree.inOrderTraversal();
         System.out.print("Post-order: ");
-        tree.postOrder();
+        tree.postOrderTraversal();
 
         System.out.println("Is this a BST?: "+tree.isBst());
 
