@@ -14,8 +14,8 @@ public class BinarySearchTree {
     private Node insertRecursively(Node root, int value){
         if(root == null) return new Node(value);
 
-        if(value < root.value) return insertRecursively(root.left, value);
-        else if(value > root.value) return insertRecursively(root.right, value);
+        if(value < root.value) root.left = insertRecursively(root.left, value);
+        else if(value > root.value) root.right = insertRecursively(root.right, value);
 
         return root;
     }
@@ -59,6 +59,7 @@ public class BinarySearchTree {
 
     public void inOrder() {
         inOrderRec(root);
+        System.out.print('\n');
     }
 
     private void inOrderRec(Node root) {
@@ -71,27 +72,28 @@ public class BinarySearchTree {
 
     public void preOrder() {
         preOrderRec(root);
+        System.out.print('\n');
+
     }
 
     private void preOrderRec(Node root) {
         if(root == null) return;
 
         System.out.printf("%d ",root.value);
-        inOrderRec(root.left);
-        inOrderRec(root.right);
+        preOrderRec(root.left);
+        preOrderRec(root.right);
     }
 
     public void postOrder(){
         postOrderRec(root);
+        System.out.print('\n');
     }
 
     private void postOrderRec(Node root){
         if(root == null) return;
-
-        inOrderRec(root.left);
-        inOrderRec(root.right);
+        postOrderRec(root.left);
+        postOrderRec(root.right);
         System.out.printf("%d ",root.value);
-
     }
 
     private static class Node {
