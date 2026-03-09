@@ -31,5 +31,9 @@ public class BSTTest {
         tree.postOrder();
 
         System.out.println("Is this a BST?: "+tree.isBst());
+
+        System.out.println("Nodes: " + tree.size());
+
+        System.out.println("To Ordered List: " + tree.toOrdererList());
     }
 }

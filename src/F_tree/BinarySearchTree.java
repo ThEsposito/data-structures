@@ -1,5 +1,10 @@
 package F_tree;
 
+import E_linked_lists.CircleLinkedList;
+import E_linked_lists.LinkedList;
+
+import java.util.List;
+
 public class BinarySearchTree {
     private Node root;
 
@@ -108,6 +113,34 @@ public class BinarySearchTree {
         if(root.right != null && root.right.value < root.value) return false;
 
         return isBstRecursive(root.left) && isBstRecursive(root.right);
+    }
+
+    public int size() {
+        return sizeRecursive(root, 0);
+    }
+
+    private int sizeRecursive(Node root, int i) {
+        if(root == null) return 0;
+
+        int j = 1;
+        j += sizeRecursive(root.left, i);
+        j += sizeRecursive(root.right, i);
+
+        return i+j;
+    }
+
+    public CircleLinkedList<Integer> toOrdererList(){
+        CircleLinkedList<Integer> l = new CircleLinkedList<>();
+        toOrderedListRecursive(root, l);
+        return l;
+    }
+
+    private void toOrderedListRecursive(Node root, CircleLinkedList<Integer> list){
+        if(root == null) return;
+
+        toOrderedListRecursive(root.left, list);
+        list.insertTail(root.value);
+        toOrderedListRecursive(root.right, list);
     }
 
     private static class Node {
