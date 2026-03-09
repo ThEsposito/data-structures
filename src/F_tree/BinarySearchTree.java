@@ -96,6 +96,20 @@ public class BinarySearchTree {
         System.out.printf("%d ",root.value);
     }
 
+    // It's just an exercise. Always return true.
+    public boolean isBst() {
+        return isBstRecursive(root);
+    }
+
+    private boolean isBstRecursive(Node root){
+        if(root == null) return true;
+
+        if(root.left != null && root.left.value > root.value) return false;
+        if(root.right != null && root.right.value < root.value) return false;
+
+        return isBstRecursive(root.left) && isBstRecursive(root.right);
+    }
+
     private static class Node {
         int value;
         Node left, right;

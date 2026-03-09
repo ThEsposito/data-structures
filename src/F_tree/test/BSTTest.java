@@ -23,8 +23,13 @@ public class BSTTest {
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
+        System.out.print("Pre-order: ");
         tree.preOrder();
+        System.out.print("In-order: ");
         tree.inOrder();
+        System.out.print("Post-order: ");
         tree.postOrder();
+
+        System.out.println("Is this a BST?: "+tree.isBst());
     }
 }
