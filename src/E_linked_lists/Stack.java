@@ -25,7 +25,7 @@ public class Stack<T> {
     public T pop(){
         T e = head.getData();
         head = head.getNext();
-        return e;;
+        return e;
     }
 
     public Node<T> getHead() {
